@@ -1,0 +1,103 @@
+// Curated wildlife photography images from Unsplash
+const slides = [
+  {
+    id: 1,
+    url: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=1920&q=80',
+    destination: 'India',
+    location: 'Ranthambore',
+    tagline: 'Where Tigers Rule the Wild',
+    description:
+      'Track the majestic Royal Bengal Tiger through ancient fortress ruins and dry deciduous forests. Our expert naturalists guide you through one of India\'s premier tiger reserves.',
+    duration: '7 Days',
+    groupSize: '6 Max',
+    bestTime: 'Oct – Apr',
+    price: '$4,200',
+    tileImage: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 2,
+    url: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=1920&q=80',
+    destination: 'India',
+    location: 'Kaziranga',
+    tagline: 'Realm of the One-Horned Rhino',
+    description:
+      'Explore the UNESCO World Heritage grasslands home to the world\'s largest population of Indian one-horned rhinoceros, alongside wild elephants and water buffalo.',
+    duration: '5 Days',
+    groupSize: '8 Max',
+    bestTime: 'Nov – Mar',
+    price: '$3,800',
+    tileImage: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 3,
+    url: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=1920&q=80',
+    destination: 'India',
+    location: 'Bharatpur',
+    tagline: 'A Paradise for Bird Photographers',
+    description:
+      'Keoladeo National Park hosts over 350 species of birds including rare Siberian cranes. Perfect for capturing stunning avian portraits in golden light.',
+    duration: '4 Days',
+    groupSize: '8 Max',
+    bestTime: 'Oct – Feb',
+    price: '$2,900',
+    tileImage: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 4,
+    url: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1920&q=80',
+    destination: 'Kenya',
+    location: 'Masai Mara',
+    tagline: 'The Great Migration Awaits',
+    description:
+      'Witness the greatest wildlife spectacle on Earth — millions of wildebeest crossing crocodile-infested rivers, surrounded by big cats and African elephants.',
+    duration: '9 Days',
+    groupSize: '6 Max',
+    bestTime: 'Jul – Oct',
+    price: '$5,500',
+    tileImage: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 5,
+    url: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=80',
+    destination: 'Kenya',
+    location: 'Masai Mara',
+    tagline: 'Golden Light on the Savanna',
+    description:
+      'Chase the perfect golden hour across endless plains. Photograph lions, cheetahs, and leopards in their natural habitat with unparalleled access.',
+    duration: '9 Days',
+    groupSize: '6 Max',
+    bestTime: 'Jul – Oct',
+    price: '$5,500',
+    tileImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 6,
+    url: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1920&q=80',
+    destination: 'India',
+    location: 'Jim Corbett',
+    tagline: 'Into the Heart of the Jungle',
+    description:
+      'India\'s oldest national park offers unmatched tiger sightings amid sal forests, river valleys, and grasslands. A photographer\'s dream at dawn.',
+    duration: '6 Days',
+    groupSize: '6 Max',
+    bestTime: 'Nov – Jun',
+    price: '$3,600',
+    tileImage: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=600&h=900&q=80&fit=crop',
+  },
+  {
+    id: 7,
+    url: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=1920&q=80',
+    destination: 'India',
+    location: 'Gir Forest',
+    tagline: 'Last Refuge of the Asiatic Lion',
+    description:
+      'The only place on Earth where Asiatic lions roam free. Capture these magnificent big cats in the dry deciduous forests of Gujarat.',
+    duration: '5 Days',
+    groupSize: '6 Max',
+    bestTime: 'Dec – Mar',
+    price: '$3,200',
+    tileImage: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=900&q=80&fit=crop',
+  },
+];
+
+export default slides;

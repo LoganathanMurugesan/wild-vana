@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4A437;
+  --color-gold-dark: #B8891F;
+  --color-ink: #1a1a2e;
+  --color-forest: #1a3a2a;
+  --color-forest-dark: #122b1e;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but allow scrolling */
+html::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Horizontal tile strip scrollbar */
+.tiles-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.tiles-scroll::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+.tiles-scroll::-webkit-scrollbar-thumb {
+  background: #D4A437;
+  border-radius: 2px;
+}
+
+/* Ken Burns subtle motion on current image */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+}
+
+.ken-burns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+/* Bottom drawer slide */
+.drawer-enter {
+  transform: translateY(100%);
+}
+.drawer-open {
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.drawer-close {
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+/* Navigation dot pulse */
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.dot-active {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+/* Ink splatter overlay effect — scoped to hero */
+.ink-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: #0a0a0a;
+  opacity: 0;
+}
+
+.ink-overlay.ink-splash {
+  animation: inkSplash 1.4s ease-in-out forwards;
+}
+
+@keyframes inkSplash {
+  0% {
+    clip-path: circle(0% at var(--cx, 50%) var(--cy, 50%));
+    opacity: 1;
+  }
+  45% {
+    clip-path: circle(75% at var(--cx, 50%) var(--cy, 50%));
+    opacity: 1;
+  }
+  55% {
+    clip-path: circle(75% at var(--cx, 50%) var(--cy, 50%));
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(150% at var(--cx, 50%) var(--cy, 50%));
+    opacity: 0;
+  }
+}
+
+/* Watercolor organic edge using SVG filter */
+.ink-overlay.ink-splash {
+  filter: url(#watercolor);
+}
