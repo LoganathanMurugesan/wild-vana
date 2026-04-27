@@ -1,11 +1,17 @@
+import { useParallax, useScrollReveal } from '../hooks/useParallax';
+
 export default function About() {
+  const imageParallax = useParallax(0.12);
+  const textReveal = useScrollReveal(0.1);
+  const statsReveal = useScrollReveal(0.2);
+
   return (
-    <section id="about" className="relative bg-ink py-20 px-6 md:px-12 overflow-hidden">
+    <section id="about" className="relative bg-ink py-32 px-6 md:px-12 overflow-hidden mb-48">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         {/* Left — text content */}
-        <div>
+        <div ref={textReveal.ref} style={textReveal.style}>
           <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">
             Our Story
           </p>
@@ -29,7 +35,7 @@ export default function About() {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6">
+          <div ref={statsReveal.ref} style={statsReveal.style} className="grid grid-cols-3 gap-6">
             {[
               { value: '12+', label: 'Years Experience' },
               { value: '200+', label: 'Tours Completed' },
@@ -46,7 +52,7 @@ export default function About() {
         </div>
 
         {/* Right — image + accent */}
-        <div className="relative">
+        <div className="relative" ref={imageParallax.ref} style={imageParallax.style}>
           <div className="relative rounded-lg overflow-hidden aspect-[3/4]">
             <img
               src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&h=1000&q=80&fit=crop"

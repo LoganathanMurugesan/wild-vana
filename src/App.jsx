@@ -16,7 +16,7 @@ export default function App() {
   return (
     <div className="bg-black">
       {/* Hero — full viewport */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden mb-48">
         <BackgroundSlider onSlideChange={handleSlideChange} />
 
         <Header />
@@ -43,7 +43,7 @@ export default function App() {
         </div>
       </section>
 
-      <div id="tours"><TourTiles /></div>
+      <div id="tours" className="mb-48"><TourTiles /></div>
       <About />
       <Gallery />
       <Contact />

@@ -1,10 +1,15 @@
+import { useScrollReveal } from '../hooks/useParallax';
+
 export default function Contact() {
+  const leftReveal = useScrollReveal(0.1);
+  const formReveal = useScrollReveal(0.15);
+
   return (
-    <section id="contact" className="relative bg-ink py-20 px-6 md:px-12">
+    <section id="contact" className="relative bg-ink py-32 px-6 md:px-12 mb-48">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-        <div>
+        <div ref={leftReveal.ref} style={leftReveal.style}>
           <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">Get In Touch</p>
           <h2 className="text-white font-display text-4xl md:text-5xl leading-tight mb-6">Contact Us</h2>
           <p className="text-white/60 font-body leading-relaxed mb-10">
@@ -63,7 +68,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-xl p-8 md:p-10">
+        <div ref={formReveal.ref} style={formReveal.style} className="bg-white/5 border border-white/10 rounded-xl p-8 md:p-10">
           <h3 className="text-white font-display text-2xl mb-6">Send a Message</h3>
           <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">

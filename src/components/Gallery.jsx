@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useScrollReveal } from '../hooks/useParallax';
 
 const galleryImages = [
   { src: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=600&h=400&q=80&fit=crop', alt: 'Bengal Tiger in Ranthambore', span: 'col-span-2 row-span-2' },
@@ -13,13 +14,15 @@ const galleryImages = [
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
+  const headerReveal = useScrollReveal(0.1);
+  const gridReveal = useScrollReveal(0.05);
 
   return (
-    <section id="gallery" className="relative bg-forest-dark py-20 px-6 md:px-12">
+    <section id="gallery" className="relative bg-forest-dark py-32 px-6 md:px-12 mb-48">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
+        <div ref={headerReveal.ref} style={headerReveal.style} className="text-center mb-14">
           <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">Captured Moments</p>
           <h2 className="text-white font-display text-4xl md:text-5xl leading-tight">Gallery</h2>
           <p className="text-white/50 font-body mt-4 text-lg max-w-xl mx-auto">
@@ -27,7 +30,7 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
+        <div ref={gridReveal.ref} style={gridReveal.style} className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
           {galleryImages.map((img, i) => (
             <div
               key={i}

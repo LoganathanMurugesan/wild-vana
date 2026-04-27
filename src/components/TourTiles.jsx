@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
 import slides from '../data/slides';
+import { useScrollReveal } from '../hooks/useParallax';
 
 export default function TourTiles() {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredId, setHoveredId] = useState(null);
+  const headerReveal = useScrollReveal(0.1);
 
   const checkScroll = () => {
     const el = scrollRef.current;
@@ -34,15 +36,12 @@ export default function TourTiles() {
   };
 
   return (
-    <section className="relative bg-forest py-20 px-6 md:px-12">
+    <section className="relative bg-forest pt-96 pb-32 px-6 md:px-12 mb-48">
       {/* Section header */}
-      <div className="mb-12 max-w-3xl">
+      <div ref={headerReveal.ref} style={headerReveal.style} className="mb-12 max-w-3xl">
         <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">
-          Explore Destinations
-        </p>
-        <h2 className="text-white font-display text-4xl md:text-5xl leading-tight">
           Your Tours
-        </h2>
+        </p>
       </div>
 
       {/* Arrow navigation */}

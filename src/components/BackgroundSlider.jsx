@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import slides from '../data/slides';
+import { useParallax } from '../hooks/useParallax';
 
 const INTERVAL = 6000; // ms between auto-advance
 const TRANSITION_DURATION = 1400; // ms for ink animation
@@ -52,6 +53,8 @@ export default function BackgroundSlider({ onSlideChange }) {
   }, [currentIndex, goToSlide]);
 
   const slide = slides[currentIndex];
+  const heroBg = useParallax(0.15);
+  const heroText = useParallax(-0.1);
 
   return (
     <>
@@ -78,9 +81,10 @@ export default function BackgroundSlider({ onSlideChange }) {
 
       {/* Current background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center ken-burns"
+        ref={heroBg.ref}
+        className="absolute -inset-10 bg-cover bg-center ken-burns"
         key={`bg-${currentIndex}`}
-        style={{ backgroundImage: `url(${slide.url})` }}
+        style={{ backgroundImage: `url(${slide.url})`, ...heroBg.style }}
       />
 
       {/* Dark gradient overlay for text readability */}
@@ -117,7 +121,11 @@ export default function BackgroundSlider({ onSlideChange }) {
       </div>
 
       {/* Slide destination & tagline */}
-      <div className="absolute bottom-32 left-10 z-20 text-left max-w-2xl">
+      <div
+        ref={heroText.ref}
+        className="absolute bottom-32 left-10 z-20 text-left max-w-2xl"
+        style={heroText.style}
+      >
         <p
           className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-2"
           key={`dest-${currentIndex}`}
