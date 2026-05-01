@@ -1,21 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useParallax';
+import { supabase } from '../lib/supabase';
 
-const galleryImages = [
-  { src: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=600&h=400&q=80&fit=crop', alt: 'Bengal Tiger in Ranthambore', span: 'col-span-2 row-span-2' },
-  { src: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=400&h=400&q=80&fit=crop', alt: 'Indian Rhinoceros in Kaziranga', span: '' },
-  { src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&h=400&q=80&fit=crop', alt: 'Birds at Bharatpur', span: '' },
-  { src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=400&h=600&q=80&fit=crop', alt: 'Wildebeest migration in Masai Mara', span: 'row-span-2' },
-  { src: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=400&h=400&q=80&fit=crop', alt: 'Tiger at Jim Corbett', span: '' },
-  { src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&q=80&fit=crop', alt: 'Asiatic Lion in Gir Forest', span: 'col-span-2' },
-  { src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&h=400&q=80&fit=crop', alt: 'Savanna sunset in Kenya', span: '' },
-  { src: 'https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=400&h=400&q=80&fit=crop', alt: 'Elephant herd', span: '' },
+const staticImages = [
+  { id: 1, src: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=600&h=400&q=80&fit=crop', alt: 'Bengal Tiger in Ranthambore', span: 'col-span-2 row-span-2' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=400&h=400&q=80&fit=crop', alt: 'Indian Rhinoceros in Kaziranga', span: '' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&h=400&q=80&fit=crop', alt: 'Birds at Bharatpur', span: '' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=400&h=600&q=80&fit=crop', alt: 'Wildebeest migration in Masai Mara', span: 'row-span-2' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=400&h=400&q=80&fit=crop', alt: 'Tiger at Jim Corbett', span: '' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=400&q=80&fit=crop', alt: 'Asiatic Lion in Gir Forest', span: 'col-span-2' },
+  { id: 7, src: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&h=400&q=80&fit=crop', alt: 'Savanna sunset in Kenya', span: '' },
+  { id: 8, src: 'https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=400&h=400&q=80&fit=crop', alt: 'Elephant herd', span: '' },
 ];
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
+  const [images, setImages] = useState(staticImages);
   const headerReveal = useScrollReveal(0.1);
   const gridReveal = useScrollReveal(0.05);
+
+  useEffect(() => {
+    supabase.from('gallery_images').select('*').order('sort_order')
+      .then(({ data }) => { if (data?.length) setImages(data); });
+  }, []);
 
   return (
     <section id="gallery" className="relative bg-forest-dark py-24 px-6 md:px-12">
@@ -32,7 +39,7 @@ export default function Gallery() {
         </div>
 
         <div ref={gridReveal.ref} style={gridReveal.style} className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
-          {galleryImages.map((img, i) => (
+          {images.map((img, i) => (
             <div
               key={i}
               className={`relative overflow-hidden rounded-lg cursor-pointer group ${img.span}`}
