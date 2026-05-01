@@ -36,44 +36,12 @@ export default function TourTiles() {
   };
 
   return (
-    <section className="relative bg-forest pt-96 pb-32 px-6 md:px-12 mb-48">
+    <section className="relative bg-forest pt-20 pb-20 px-6 md:px-12">
       {/* Section header */}
       <div ref={headerReveal.ref} style={headerReveal.style} className="mb-12 max-w-3xl">
         <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">
           Your Tours
         </p>
-      </div>
-
-      {/* Arrow navigation */}
-      <div className="absolute top-24 right-6 md:right-12 flex gap-3 z-10">
-        <button
-          onClick={() => scroll('left')}
-          className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer bg-transparent ${
-            canScrollLeft
-              ? 'border-gold text-gold hover:bg-gold hover:text-ink'
-              : 'border-white/15 text-white/20 cursor-default'
-          }`}
-          disabled={!canScrollLeft}
-          aria-label="Scroll left"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer bg-transparent ${
-            canScrollRight
-              ? 'border-gold text-gold hover:bg-gold hover:text-ink'
-              : 'border-white/15 text-white/20 cursor-default'
-          }`}
-          disabled={!canScrollRight}
-          aria-label="Scroll right"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
 
       {/* Tiles horizontal scroll strip */}
@@ -174,6 +142,38 @@ export default function TourTiles() {
 
         {/* End spacer so last tile can scroll into view */}
         <div className="flex-shrink-0 w-12" />
+      </div>
+
+      {/* Arrow navigation — bottom right, below the tiles */}
+      <div className="flex justify-end gap-3 mt-6">
+        <button
+          onClick={() => scroll('left')}
+          className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer bg-transparent ${
+            canScrollLeft
+              ? 'border-gold text-gold hover:bg-gold hover:text-ink'
+              : 'border-white/15 text-white/20 cursor-default'
+          }`}
+          disabled={!canScrollLeft}
+          aria-label="Scroll left"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          onClick={() => scroll('right')}
+          className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer bg-transparent ${
+            canScrollRight
+              ? 'border-gold text-gold hover:bg-gold hover:text-ink'
+              : 'border-white/15 text-white/20 cursor-default'
+          }`}
+          disabled={!canScrollRight}
+          aria-label="Scroll right"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
 
       {/* Subtle gradient fades on edges */}

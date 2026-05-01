@@ -5,12 +5,13 @@ export default function Contact() {
   const formReveal = useScrollReveal(0.15);
 
   return (
-    <section id="contact" className="relative bg-ink py-32 px-6 md:px-12 mb-48">
+    <section id="contact" className="relative bg-ink py-24 px-6 md:px-12">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+      <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-6">Get In Touch</p>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
         <div ref={leftReveal.ref} style={leftReveal.style}>
-          <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">Get In Touch</p>
           <h2 className="text-white font-display text-4xl md:text-5xl leading-tight mb-6">Contact Us</h2>
           <p className="text-white/60 font-body leading-relaxed mb-10">
             Ready to embark on your next wildlife photography adventure? Reach out and our team will help you choose the perfect expedition.
