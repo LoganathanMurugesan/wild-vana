@@ -18,14 +18,15 @@ export default function Gallery() {
   const gridReveal = useScrollReveal(0.05);
 
   return (
-    <section id="gallery" className="relative bg-forest-dark py-32 px-6 md:px-12 mb-48">
+    <section id="gallery" className="relative bg-forest-dark py-24 px-6 md:px-12">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
+      <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-6">Captured Moments</p>
+
       <div className="max-w-6xl mx-auto">
-        <div ref={headerReveal.ref} style={headerReveal.style} className="text-center mb-14">
-          <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-3">Captured Moments</p>
+        <div ref={headerReveal.ref} style={headerReveal.style} className="mb-14">
           <h2 className="text-white font-display text-4xl md:text-5xl leading-tight">Gallery</h2>
-          <p className="text-white/50 font-body mt-4 text-lg max-w-xl mx-auto">
+          <p className="text-white/50 font-body mt-4 text-lg max-w-xl">
             A glimpse into the extraordinary encounters our guests have witnessed.
           </p>
         </div>
