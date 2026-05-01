@@ -1,13 +1,28 @@
 import { useRef, useState, useEffect } from 'react';
-import slides from '../data/slides';
+import staticSlides from '../data/slides';
 import { useScrollReveal } from '../hooks/useParallax';
+import { supabase } from '../lib/supabase';
 
 export default function TourTiles() {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredId, setHoveredId] = useState(null);
+  const [tours, setTours] = useState(staticSlides);
   const headerReveal = useScrollReveal(0.1);
+
+  useEffect(() => {
+    supabase.from('tours').select('*').eq('published', true).order('sort_order')
+      .then(({ data }) => {
+        if (data?.length) {
+          setTours(data.map(t => ({
+            id: t.id, destination: t.destination, location: t.location,
+            tagline: t.tagline, price: t.price, duration: t.duration,
+            url: t.hero_image, tileImage: t.tile_image,
+          })));
+        }
+      });
+  }, []);
 
   const checkScroll = () => {
     const el = scrollRef.current;
@@ -50,7 +65,7 @@ export default function TourTiles() {
         className="tiles-scroll flex gap-0 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#D4A437 rgba(255,255,255,0.05)' }}
       >
-        {slides.map((tour, i) => {
+        {tours.map((tour, i) => {
           const isHovered = hoveredId === tour.id;
           return (
             <div
