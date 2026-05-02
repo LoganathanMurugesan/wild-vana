@@ -6,6 +6,7 @@ import TourTiles from './components/TourTiles';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
+import TourDetails from './components/TourDetails';
 
 import AdminRoute from './admin/AdminRoute';
 import AdminLayout from './admin/AdminLayout';
@@ -47,6 +48,7 @@ export default function App() {
     <Routes>
       {/* Public */}
       <Route path="/" element={<PublicSite />} />
+      <Route path="/tours/:id" element={<TourDetails />} />
 
       {/* Admin auth */}
       <Route path="/admin/login" element={<AdminLogin />} />

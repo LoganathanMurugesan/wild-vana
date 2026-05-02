@@ -5,21 +5,37 @@
 
 -- Tours (also used as hero slides)
 create table if not exists tours (
-  id           uuid primary key default gen_random_uuid(),
-  destination  text not null,
-  location     text not null,
-  tagline      text not null,
-  description  text,
-  duration     text,
-  group_size   text,
-  best_time    text,
-  price        text,
-  hero_image   text,   -- full-width hero background URL
-  tile_image   text,   -- vertical card thumbnail URL
-  sort_order   int default 0,
-  published    boolean default true,
-  created_at   timestamptz default now()
+  id              uuid primary key default gen_random_uuid(),
+  destination     text not null,
+  location        text not null,
+  tagline         text not null,
+  description     text,
+  duration        text,
+  group_size      text,
+  best_time       text,
+  price           text,
+  hero_image      text,             -- full-width hero background URL
+  tile_image      text,             -- vertical card thumbnail URL
+  trip_dates      text,             -- e.g. "July 12th – July 18th, 2026"
+  seats_left      int default 1,    -- shown as "(01 Seat Left)"
+  itinerary       jsonb default '[]'::jsonb,  -- [{day,title,body}, …]
+  inclusions      jsonb default '[]'::jsonb,  -- [text, …]
+  exclusions      jsonb default '[]'::jsonb,  -- [text, …]
+  faqs            jsonb default '[]'::jsonb,  -- [{q,a}, …]
+  gallery_images  jsonb default '[]'::jsonb,  -- [url, …] extra gallery photos
+  sort_order      int default 0,
+  published       boolean default true,
+  created_at      timestamptz default now()
 );
+
+-- Migration: run this if table already exists
+-- alter table tours add column if not exists trip_dates     text;
+-- alter table tours add column if not exists seats_left     int default 1;
+-- alter table tours add column if not exists itinerary      jsonb default '[]'::jsonb;
+-- alter table tours add column if not exists inclusions     jsonb default '[]'::jsonb;
+-- alter table tours add column if not exists exclusions     jsonb default '[]'::jsonb;
+-- alter table tours add column if not exists faqs           jsonb default '[]'::jsonb;
+-- alter table tours add column if not exists gallery_images jsonb default '[]'::jsonb;
 
 -- Gallery images
 create table if not exists gallery_images (
