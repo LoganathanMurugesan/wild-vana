@@ -1,14 +1,18 @@
 import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import staticSlides from '../data/slides';
 import { useScrollReveal } from '../hooks/useParallax';
 import { supabase } from '../lib/supabase';
+import FindOutMoreModal from './FindOutMoreModal';
 
 export default function TourTiles() {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredId, setHoveredId] = useState(null);
   const [tours, setTours] = useState(staticSlides);
+  const [enquiryTour, setEnquiryTour] = useState(null);
   const headerReveal = useScrollReveal(0.1);
 
   useEffect(() => {
@@ -133,10 +137,16 @@ export default function TourTiles() {
                     overflow: 'hidden',
                   }}
                 >
-                  <button className="w-full py-2.5 bg-gold text-ink font-body text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-gold-dark transition-colors cursor-pointer">
+                  <button
+                    onClick={() => setEnquiryTour(tour)}
+                    className="w-full py-2.5 bg-gold text-ink font-body text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-gold-dark transition-colors cursor-pointer"
+                  >
                     Book Now
                   </button>
-                  <button className="w-full py-2.5 border border-white/25 text-white/80 font-body text-xs tracking-wider uppercase rounded-sm hover:border-gold hover:text-gold transition-colors cursor-pointer bg-transparent">
+                  <button
+                    onClick={() => navigate(`/tours/${tour.id}`)}
+                    className="w-full py-2.5 border border-white/25 text-white/80 font-body text-xs tracking-wider uppercase rounded-sm hover:border-gold hover:text-gold transition-colors cursor-pointer bg-transparent"
+                  >
                     View Itinerary
                   </button>
                 </div>
@@ -197,6 +207,14 @@ export default function TourTiles() {
       )}
       {canScrollRight && (
         <div className="absolute right-0 top-40 bottom-0 w-16 bg-gradient-to-l from-forest to-transparent pointer-events-none z-[5]" />
+      )}
+
+      {enquiryTour && (
+        <FindOutMoreModal
+          tourLocation={enquiryTour.location}
+          tourDestination={enquiryTour.destination}
+          onClose={() => setEnquiryTour(null)}
+        />
       )}
     </section>
   );
