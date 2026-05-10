@@ -16,6 +16,8 @@ import AdminTours from './admin/AdminTours';
 import AdminGallery from './admin/AdminGallery';
 import AdminSlides from './admin/AdminSlides';
 import AdminBookings from './admin/AdminBookings';
+import AdminCompetitions from './admin/AdminCompetitions';
+import Competitions from './pages/Competitions';
 
 function PublicSite() {
   const [, setCurrentSlide] = useState(0);
@@ -49,6 +51,7 @@ export default function App() {
       {/* Public */}
       <Route path="/" element={<PublicSite />} />
       <Route path="/tours/:id" element={<TourDetails />} />
+      <Route path="/competitions" element={<Competitions />} />
 
       {/* Admin auth */}
       <Route path="/admin/login" element={<AdminLogin />} />
@@ -60,6 +63,7 @@ export default function App() {
         <Route path="gallery" element={<AdminGallery />} />
         <Route path="slides" element={<AdminSlides />} />
         <Route path="bookings" element={<AdminBookings />} />
+        <Route path="competitions" element={<AdminCompetitions />} />
       </Route>
     </Routes>
   );

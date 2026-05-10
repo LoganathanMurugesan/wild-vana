@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,6 +43,12 @@ export default function Header() {
             {item}
           </a>
         ))}
+        <Link
+          to="/competitions"
+          className="text-white/80 hover:text-gold font-body text-sm tracking-wider uppercase transition-colors duration-300 no-underline"
+        >
+          Competitions
+        </Link>
         <a
           href="#contact"
           className="ml-4 px-6 py-2.5 bg-gold text-ink font-body text-sm font-semibold tracking-wider uppercase rounded-sm hover:bg-gold-dark transition-colors duration-300 no-underline"
@@ -81,6 +88,13 @@ export default function Header() {
                 {item}
               </a>
             ))}
+            <Link
+              to="/competitions"
+              onClick={() => setMenuOpen(false)}
+              className="text-white/80 hover:text-gold font-body text-lg tracking-wider uppercase no-underline"
+            >
+              Competitions
+            </Link>
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}

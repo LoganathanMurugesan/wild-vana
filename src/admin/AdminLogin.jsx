@@ -34,7 +34,7 @@ export default function AdminLogin() {
             <input
               type="email" required value={email} onChange={e => setEmail(e.target.value)}
               className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white font-body text-sm outline-none focus:border-gold transition-colors"
-              placeholder="admin@wildvana.com"
+              placeholder="Email address"
             />
           </div>
           <div>

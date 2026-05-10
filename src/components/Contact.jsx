@@ -108,16 +108,16 @@ export default function Contact() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-white/40 font-body text-xs uppercase tracking-wider block mb-2">First Name</label>
-                  <input required type="text" value={form.first_name} onChange={e => setForm(f => ({ ...f, first_name: e.target.value }))} className={inputCls} placeholder="John" />
+                  <input required type="text" value={form.first_name} onChange={e => setForm(f => ({ ...f, first_name: e.target.value }))} className={inputCls} placeholder="First name" />
                 </div>
                 <div>
                   <label className="text-white/40 font-body text-xs uppercase tracking-wider block mb-2">Last Name</label>
-                  <input required type="text" value={form.last_name} onChange={e => setForm(f => ({ ...f, last_name: e.target.value }))} className={inputCls} placeholder="Doe" />
+                  <input required type="text" value={form.last_name} onChange={e => setForm(f => ({ ...f, last_name: e.target.value }))} className={inputCls} placeholder="Last name" />
                 </div>
               </div>
               <div>
                 <label className="text-white/40 font-body text-xs uppercase tracking-wider block mb-2">Email</label>
-                <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} className={inputCls} placeholder="john@example.com" />
+                <input required type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} className={inputCls} placeholder="Your email address" />
               </div>
               <div>
                 <label className="text-white/40 font-body text-xs uppercase tracking-wider block mb-2">Interested In</label>

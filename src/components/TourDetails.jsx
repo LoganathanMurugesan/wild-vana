@@ -86,7 +86,7 @@ export default function TourDetails() {
         setTour({
           id: data.id, destination: data.destination, location: data.location,
           tagline: data.tagline, description: data.description, duration: data.duration,
-          groupSize: data.group_size, bestTime: data.best_time, price: data.price,
+          groupSize: data.group_size, bestTime: data.best_time, price: data.price, safaris: data.safaris,
           heroImage: data.hero_image, tileImage: data.tile_image,
           tripDates: data.trip_dates, seatsLeft: data.seats_left,
           itinerary: data.itinerary, inclusions: data.inclusions,
@@ -99,7 +99,7 @@ export default function TourDetails() {
           setTour({
             id: fallback.id, destination: fallback.destination, location: fallback.location,
             tagline: fallback.tagline, description: fallback.description, duration: fallback.duration,
-            groupSize: fallback.groupSize, bestTime: fallback.bestTime, price: fallback.price,
+            groupSize: fallback.groupSize, bestTime: fallback.bestTime, price: fallback.price, safaris: fallback.safaris,
             heroImage: fallback.url, tileImage: fallback.tileImage,
           });
         }
@@ -240,9 +240,10 @@ export default function TourDetails() {
             </p>
 
             {/* Quick stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8">
               {[
                 { label: 'Duration', value: tour.duration },
+                { label: 'Safaris', value: tour.safaris },
                 { label: 'Group Size', value: tour.groupSize },
                 { label: 'Best Time', value: tour.bestTime },
                 { label: 'Price', value: tour.price },

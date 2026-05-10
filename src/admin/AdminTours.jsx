@@ -332,7 +332,7 @@ export default function AdminTours() {
                   <div className="grid grid-cols-3 gap-4">
                     <div>
                       <label className={labelCls}>Price</label>
-                      <input className={inputCls} placeholder="$4,200" {...f('price')} />
+                      <input className={inputCls} placeholder="₹1,45,000" {...f('price')} />
                     </div>
                     <div>
                       <label className={labelCls}>Duration</label>
