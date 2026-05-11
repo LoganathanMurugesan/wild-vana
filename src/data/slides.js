@@ -13,7 +13,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Oct – Apr',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1605092676920-8ac5ae40c7c8?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1760408340442-b183ba3f9160?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const slides = [
     groupSize: '8 Max',
     bestTime: 'Nov – Mar',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1776601797873-396d38b7a1a9?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1767008450763-09dae0cbce98?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const slides = [
     groupSize: '8 Max',
     bestTime: 'Oct – Feb',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1536338490299-da62c7be85de?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1668354690433-fb0aea52a82c?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Jul – Oct',
     price: '₹2,50,000',
-    tileImage: 'https://images.unsplash.com/photo-1536539021558-1c10ce35dc23?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1738505803781-00c8641bd282?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Jul – Oct',
     price: '₹2,50,000',
-    tileImage: 'https://images.unsplash.com/photo-1639221652297-f0ce04992bb4?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1761471321968-4c15cc483ca9?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Nov – Jun',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1771922365997-8e687eda46b0?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1726688355874-9307de791844?w=600&h=900&q=85&fit=crop',
   },
   {
     id: 7,
@@ -103,7 +103,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Dec – Mar',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1638250084708-86b50a2404f4?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1638250084708-86b50a2404f4?w=600&h=900&q=85&fit=crop',
   },
 ];
 
