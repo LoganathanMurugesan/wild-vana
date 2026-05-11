@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useState, useCallback, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import BackgroundSlider from './components/BackgroundSlider';
 import Header from './components/Header';
 import TourTiles from './components/TourTiles';
@@ -17,7 +17,21 @@ import AdminGallery from './admin/AdminGallery';
 import AdminSlides from './admin/AdminSlides';
 import AdminBookings from './admin/AdminBookings';
 import AdminCompetitions from './admin/AdminCompetitions';
+import AdminAnalytics from './admin/AdminAnalytics';
 import Competitions from './pages/Competitions';
+import { trackPageView } from './lib/analytics';
+
+// Fires a page_view on every route change
+function RouteTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    // Skip admin paths — only track public visitors
+    if (!location.pathname.startsWith('/admin')) {
+      trackPageView(location.pathname);
+    }
+  }, [location.pathname]);
+  return null;
+}
 
 function PublicSite() {
   const [, setCurrentSlide] = useState(0);
@@ -47,24 +61,28 @@ function PublicSite() {
 
 export default function App() {
   return (
-    <Routes>
-      {/* Public */}
-      <Route path="/" element={<PublicSite />} />
-      <Route path="/tours/:id" element={<TourDetails />} />
-      <Route path="/competitions" element={<Competitions />} />
+    <>
+      <RouteTracker />
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<PublicSite />} />
+        <Route path="/tours/:id" element={<TourDetails />} />
+        <Route path="/competitions" element={<Competitions />} />
 
-      {/* Admin auth */}
-      <Route path="/admin/login" element={<AdminLogin />} />
+        {/* Admin auth */}
+        <Route path="/admin/login" element={<AdminLogin />} />
 
-      {/* Admin (protected) */}
-      <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
-        <Route index element={<AdminDashboard />} />
-        <Route path="tours" element={<AdminTours />} />
-        <Route path="gallery" element={<AdminGallery />} />
-        <Route path="slides" element={<AdminSlides />} />
-        <Route path="bookings" element={<AdminBookings />} />
-        <Route path="competitions" element={<AdminCompetitions />} />
-      </Route>
-    </Routes>
+        {/* Admin (protected) */}
+        <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="tours" element={<AdminTours />} />
+          <Route path="gallery" element={<AdminGallery />} />
+          <Route path="slides" element={<AdminSlides />} />
+          <Route path="bookings" element={<AdminBookings />} />
+          <Route path="competitions" element={<AdminCompetitions />} />
+          <Route path="analytics" element={<AdminAnalytics />} />
+        </Route>
+      </Routes>
+    </>
   );
 }

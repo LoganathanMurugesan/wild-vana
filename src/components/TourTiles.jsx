@@ -4,6 +4,7 @@ import staticSlides from '../data/slides';
 import { useScrollReveal } from '../hooks/useParallax';
 import { supabase } from '../lib/supabase';
 import FindOutMoreModal from './FindOutMoreModal';
+import { trackBookingClick } from '../lib/analytics';
 
 export default function TourTiles() {
   const navigate = useNavigate();
@@ -138,7 +139,7 @@ export default function TourTiles() {
                   }}
                 >
                   <button
-                    onClick={() => setEnquiryTour(tour)}
+                    onClick={() => { trackBookingClick(tour.location); setEnquiryTour(tour); }}
                     className="w-full py-2.5 bg-gold text-ink font-body text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-gold-dark transition-colors cursor-pointer"
                   >
                     Book Now

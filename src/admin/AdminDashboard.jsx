@@ -3,24 +3,40 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState({ tours: 0, gallery: 0, bookings: 0, pending: 0 });
+  const [stats, setStats] = useState({ tours: 0, gallery: 0, bookings: 0, pending: 0, visitors: 0, pageViews: 0 });
 
   useEffect(() => {
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
     Promise.all([
       supabase.from('tours').select('id', { count: 'exact', head: true }),
       supabase.from('gallery_images').select('id', { count: 'exact', head: true }),
       supabase.from('bookings').select('id', { count: 'exact', head: true }),
       supabase.from('bookings').select('id', { count: 'exact', head: true }).eq('status', 'pending'),
-    ]).then(([t, g, b, p]) => {
-      setStats({ tours: t.count ?? 0, gallery: g.count ?? 0, bookings: b.count ?? 0, pending: p.count ?? 0 });
+      supabase.from('analytics_events').select('session_id').gte('created_at', thirtyDaysAgo.toISOString()),
+      supabase.from('analytics_events').select('id', { count: 'exact', head: true })
+        .eq('event_type', 'page_view').gte('created_at', thirtyDaysAgo.toISOString()),
+    ]).then(([t, g, b, p, sessions, views]) => {
+      const uniqueSessions = new Set((sessions.data || []).map(e => e.session_id)).size;
+      setStats({
+        tours: t.count ?? 0,
+        gallery: g.count ?? 0,
+        bookings: b.count ?? 0,
+        pending: p.count ?? 0,
+        visitors: uniqueSessions,
+        pageViews: views.count ?? 0,
+      });
     });
   }, []);
 
   const cards = [
-    { label: 'Total Tours', value: stats.tours, to: '/admin/tours', color: 'text-gold' },
-    { label: 'Gallery Images', value: stats.gallery, to: '/admin/gallery', color: 'text-emerald-400' },
-    { label: 'Total Bookings', value: stats.bookings, to: '/admin/bookings', color: 'text-sky-400' },
-    { label: 'Pending Enquiries', value: stats.pending, to: '/admin/bookings', color: 'text-amber-400' },
+    { label: 'Total Tours',        value: stats.tours,     to: '/admin/tours',       color: 'text-gold' },
+    { label: 'Gallery Images',     value: stats.gallery,   to: '/admin/gallery',     color: 'text-emerald-400' },
+    { label: 'Total Bookings',     value: stats.bookings,  to: '/admin/bookings',    color: 'text-sky-400' },
+    { label: 'Pending Enquiries',  value: stats.pending,   to: '/admin/bookings',    color: 'text-amber-400' },
+    { label: 'Visitors (30d)',     value: stats.visitors,  to: '/admin/analytics',   color: 'text-purple-400' },
+    { label: 'Page Views (30d)',   value: stats.pageViews, to: '/admin/analytics',   color: 'text-pink-400' },
   ];
 
   const quickLinks = [
@@ -28,6 +44,7 @@ export default function AdminDashboard() {
     { to: '/admin/gallery', label: 'Upload Gallery Image' },
     { to: '/admin/slides', label: 'Manage Hero Slides' },
     { to: '/admin/bookings', label: 'View Enquiries' },
+    { to: '/admin/analytics', label: 'View Analytics' },
   ];
 
   return (
@@ -35,7 +52,7 @@ export default function AdminDashboard() {
       <h1 className="text-white font-display text-3xl mb-2">Dashboard</h1>
       <p className="text-white/40 font-body text-sm mb-10">Welcome back. Here's what's happening.</p>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-10">
         {cards.map(card => (
           <Link key={card.label} to={card.to}
             className="bg-white/5 border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors no-underline">

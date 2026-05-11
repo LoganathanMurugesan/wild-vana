@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import staticSlides from '../data/slides';
 import { supabase } from '../lib/supabase';
 import FindOutMoreModal from './FindOutMoreModal';
+import { trackTourView } from '../lib/analytics';
 
 const parseJson = (val, fallback = []) => {
   if (Array.isArray(val) && val.length > 0) return val;
@@ -93,6 +94,7 @@ export default function TourDetails() {
           exclusions: data.exclusions, faqs: data.faqs,
           galleryImages: data.gallery_images,
         });
+        trackTourView(data.id, data.location);
       } else {
         const fallback = staticSlides.find(s => String(s.id) === String(id));
         if (fallback) {
@@ -102,6 +104,7 @@ export default function TourDetails() {
             groupSize: fallback.groupSize, bestTime: fallback.bestTime, price: fallback.price, safaris: fallback.safaris,
             heroImage: fallback.url, tileImage: fallback.tileImage,
           });
+          trackTourView(fallback.id, fallback.location);
         }
       }
       setLoading(false);

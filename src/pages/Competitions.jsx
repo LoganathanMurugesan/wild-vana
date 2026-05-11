@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { trackCompetitionRegister } from '../lib/analytics';
 
 const STORAGE_KEY = 'wv_competition_reg';
 const BUCKET = 'competition-photos';
@@ -94,6 +95,7 @@ export default function Competitions() {
       if (error) throw error;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       setRegistration(data);
+      trackCompetitionRegister();
     } catch (err) {
       setRegError(err.message || 'Registration failed. Please try again.');
     }
