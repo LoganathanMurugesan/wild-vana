@@ -1,8 +1,8 @@
-// Curated wildlife photography images from Unsplash
+// Wildlife photography images — sourced from Unsplash (free licence)
 const slides = [
   {
     id: 1,
-    url: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1605092676920-8ac5ae40c7c8?w=1920&q=85',
     destination: 'India',
     location: 'Ranthambore',
     tagline: 'Where Tigers Rule the Wild',
@@ -13,11 +13,11 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Oct – Apr',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1561731216-c3a4d514e396?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1605092676920-8ac5ae40c7c8?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 2,
-    url: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1776601797873-396d38b7a1a9?w=1920&q=85',
     destination: 'India',
     location: 'Kaziranga',
     tagline: 'Realm of the One-Horned Rhino',
@@ -28,11 +28,11 @@ const slides = [
     groupSize: '8 Max',
     bestTime: 'Nov – Mar',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1535338454528-1b4a56484cd2?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1776601797873-396d38b7a1a9?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 3,
-    url: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1536338490299-da62c7be85de?w=1920&q=85',
     destination: 'India',
     location: 'Bharatpur',
     tagline: 'A Paradise for Bird Photographers',
@@ -43,11 +43,11 @@ const slides = [
     groupSize: '8 Max',
     bestTime: 'Oct – Feb',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1536338490299-da62c7be85de?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 4,
-    url: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1536539021558-1c10ce35dc23?w=1920&q=85',
     destination: 'Kenya',
     location: 'Masai Mara',
     tagline: 'The Great Migration Awaits',
@@ -58,11 +58,11 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Jul – Oct',
     price: '₹2,50,000',
-    tileImage: 'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1536539021558-1c10ce35dc23?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 5,
-    url: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1639221652297-f0ce04992bb4?w=1920&q=85',
     destination: 'Kenya',
     location: 'Masai Mara',
     tagline: 'Golden Light on the Savanna',
@@ -73,11 +73,11 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Jul – Oct',
     price: '₹2,50,000',
-    tileImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1639221652297-f0ce04992bb4?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 6,
-    url: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1771922365997-8e687eda46b0?w=1920&q=85',
     destination: 'India',
     location: 'Jim Corbett',
     tagline: 'Into the Heart of the Jungle',
@@ -88,11 +88,11 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Nov – Jun',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1771922365997-8e687eda46b0?w=600&h=900&q=80&fit=crop',
   },
   {
     id: 7,
-    url: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=1920&q=80',
+    url: 'https://images.unsplash.com/photo-1638250084708-86b50a2404f4?w=1920&q=85',
     destination: 'India',
     location: 'Gir Forest',
     tagline: 'Last Refuge of the Asiatic Lion',
@@ -103,7 +103,7 @@ const slides = [
     groupSize: '6 Max',
     bestTime: 'Dec – Mar',
     price: '₹35,000',
-    tileImage: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&h=900&q=80&fit=crop',
+    tileImage: 'https://images.unsplash.com/photo-1638250084708-86b50a2404f4?w=600&h=900&q=80&fit=crop',
   },
 ];
 
